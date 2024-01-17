@@ -1,0 +1,81 @@
+.body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  margin: 10px;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+button {
+  background-color:#008774;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-top: -2px;
+  /* text-align: left; */
+}
+
+/* Style the error message specifically for email */
+.email-error {
+  margin-top: 8px;
+}
+
+/* Style the error message specifically for password */
+.password-error {
+  margin-top: 8px;
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.links-container a {
+  text-decoration: none;
+  color: #008774;
+}
+
+.links-container a:hover {
+  text-decoration: underline;
+}
+
+/* Your existing styles */
+
+@media screen and (max-width: 600px) {
+  .auth-form {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+
+  /* Add additional styles or adjustments for smaller screens if needed */
+}

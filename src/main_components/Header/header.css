@@ -1,0 +1,42 @@
+/* header.css */
+
+.logo {
+  height: 50px;
+  width: 70px;
+  border-radius: 20px;
+}
+
+.header {
+  font-size: 15px;
+  color: black;
+  transition: color 0.3s ease;
+  font-weight: 700;
+}
+
+.header:hover {
+  color: #008774;
+}
+
+.signout {
+  background-color: #0dcbb2;
+  color: aliceblue;
+  border-radius: 41px;
+  font-size: small;
+  margin-right: 9px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .logo {
+    height: 40px;
+    width: 60px;
+  }
+
+  .header {
+    font-size: 14px;
+  }
+
+  .signout {
+    font-size: x-small;
+  }
+}
