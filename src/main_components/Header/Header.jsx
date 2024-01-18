@@ -1,10 +1,22 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../assets/logo2.png";
+import {useNavigate} from 'react-router-dom'
 
 import "./header.css";
 
 function Header() {
+
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+  localStorage.clear();
+  alert('Logged out Successfully')
+  navigate('/' ,{replace:true})
+
+}
+
+
   return (
     <div>
       <nav className="navbar bg-body-tertiary">
@@ -23,7 +35,7 @@ function Header() {
           <span>
             {" "}
             {/* Logout button */}
-            <button className="ms-1 signout">Logout</button>
+            <button onClick={handleLogout} className="ms-1 signout">Logout</button>
           </span>
         </div>
       </nav>

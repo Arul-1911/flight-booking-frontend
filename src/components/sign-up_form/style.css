@@ -26,8 +26,8 @@ input,
 button {
   width: 100%;
   padding: 10px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
+  margin-bottom: 30px;
+  /* box-sizing: border-box; */
   border-radius: 20px;
 }
 

@@ -61,7 +61,7 @@ function ResetEmail() {
           onSubmit={onSubmit}
         >
           <Form>
-            <div>
+            <div className="mb-3">
               <Field
                 type="email"
                 id="email"
@@ -79,7 +79,7 @@ function ResetEmail() {
 
             <button type="submit">Send Reset Link</button>
             <div>
-              <p>
+              <p className="mt-3">
                 Remember your password? <Link to="/signin">Login!</Link>
               </p>
             </div>

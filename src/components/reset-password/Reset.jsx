@@ -48,7 +48,7 @@ const navigate = useNavigate();
         onSubmit={onSubmit}
       >
         <Form>
-          <div>
+          <div >
             <Field type="email" id="email" name="email" placeholder="email" />
             <ErrorMessage
               name="email"
@@ -57,7 +57,7 @@ const navigate = useNavigate();
               
             />
           </div>
-          <div>
+          <div className="mb-3"> 
             <Field
               type="password"
               id="password"

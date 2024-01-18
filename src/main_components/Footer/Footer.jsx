@@ -35,6 +35,7 @@ function Footer() {
     </div>
   </div>
   <div className="footer-bottom">
+    <p>Cheap flight booking from Here, to Everywhere</p>
     <p>&copy; 2024 Kiwi.com All rights reserved.</p>
   </div>
 </div>

@@ -63,7 +63,7 @@ function SignUp() {
             onSubmit={onSubmit}
           >
             <Form>
-              <div>
+              <div className="mb-2">
                 <Field
                   type="text"
                   id="name"
@@ -76,7 +76,7 @@ function SignUp() {
                   className="error-message"
                 />
               </div>
-              <div>
+              <div className="mb-2">
                 <Field
                   type="email"
                   id="email"
@@ -89,7 +89,7 @@ function SignUp() {
                   className="error-message"
                 />
               </div>
-              <div>
+              <div className="mb-4">
                 <Field
                   type="password"
                   id="password"
@@ -102,7 +102,7 @@ function SignUp() {
                   className="error-message"
                 />
               </div>
-              <button type="submit" disabled={loading}>
+              <button type="submit" disabled={loading} className="mb-2">
                 Sign Up
               </button>
               <p>

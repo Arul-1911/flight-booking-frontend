@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: row;
     padding: 17px;
-    height: 90px; /* Display fields in a row by default */
+    height: 90px; 
     /* flex-wrap: wrap; */
      /* Allow the fields to wrap to the next line in smaller screens */
     /* align-items: center; */

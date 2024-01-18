@@ -3,24 +3,27 @@
 .background-container {
   position: relative;
   height: 100vh;
-  background: url("D:\VS code\Flight_booking\client\src\components\getstartedpage\45726838.jpg")
-    center/cover no-repeat;
-  background-size: cover; /* Make the background image cover the entire container */
+  background: url("/src/components/getstartedpage/45726838.jpg") center/cover no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .get-started-button {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
+  width: 120px;
+  padding: 2px;
+  height: 40px; /* Adjust the height as needed */
+  margin-bottom: 50px; /* Adjust the spacing between the button and the bottom */
   background-color: transparent;
   color: black;
   text-decoration: none;
-  font-size: 21px;
+  font-size: 16px; /* Adjust the font size as needed */
   border: 2px solid black;
-  border-radius: 45px;
+  border-radius: 24px;
   transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
 }
 
 .get-started-button:hover {
@@ -31,14 +34,14 @@
 
 /* Responsive styles */
 @media screen and (min-width: 600px) {
-  span {
-    font-size: 28px;
+  .get-started-button {
+    font-size: 18px;
   }
 }
 
 @media screen and (min-width: 900px) {
-  span {
-    font-size: 32px;
+  .get-started-button {
+    font-size: 20px;
   }
 }
 

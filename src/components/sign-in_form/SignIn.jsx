@@ -27,26 +27,21 @@ function SignIn() {
     try {
       setLoading(true);
       setSubmitting(true);
-  
-      const token = localStorage.getItem("token");
-      console.log("Token:", token);
-  
+
       // Simulate a delay before making the API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-  
-      // Make the API call
-      const response = await axios.post(`${backendUrl}/auth/signin`, values, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-  
-      // Update local storage and navigate after the delay
+
+      // Make the API call to authenticate user and obtain token
+      const response = await axios.post(`${backendUrl}/auth/signin`, values);
+
+      // Update local storage with the new token
       localStorage.setItem("token", response.data.token);
+
+      // Navigate to the home page after successful login
       navigate("/home");
     } catch (error) {
       console.error("Signin error:", error);
-  
+
       if (error.response && error.response.status === 401) {
         setErrorMessage("Invalid username or password. Please try again.");
       } else {
@@ -80,7 +75,7 @@ function SignIn() {
               onSubmit={onSubmit}
             >
               <Form>
-                <div>
+                <div className="mb-2">
                   <Field
                     type="email"
                     id="email"
@@ -95,7 +90,7 @@ function SignIn() {
                   />
                 </div>
 
-                <div>
+                <div className="mb-2">
                   <Field
                     type="password"
                     id="password"
@@ -109,10 +104,10 @@ function SignIn() {
                   />
                 </div>
 
-                <button type="submit">Sign In</button>
+                <button type="submit" className="mt-3" >Sign In</button>
                 <div>
-                  <p>
-                    <Link to="/resetpasswordemail">Forgot Password?</Link>
+                  <p className="mb-2">
+                    <Link to="/resetpasswordemail" >Forgot Password?</Link>
                   </p>
                   <p>
                     Don't have an account? <Link to="/signup">Register!</Link>
