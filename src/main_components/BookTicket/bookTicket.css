@@ -1,0 +1,47 @@
+.bookticket-container {
+    height: auto;
+    padding: 5%;
+  }
+  
+  .error-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .error-image {
+    max-width: 100%;
+    height: 350px;
+  }
+  
+  .error-text {
+    margin-top: 20px;
+  }
+
+  .back-to-booking{
+    border-radius: 30px;
+    
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .bookticket-container {
+      padding: 3%;
+    }
+  
+    .error-image {
+      max-width: 80%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .bookticket-container {
+      padding: 2%;
+    }
+  
+    .error-image {
+      max-width: 100%;
+    }
+  }
+  

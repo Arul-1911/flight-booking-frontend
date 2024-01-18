@@ -1,21 +1,18 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../../assets/logo2.png";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate, Link } from "react-router-dom";
 
 import "./header.css";
 
 function Header() {
-
   const navigate = useNavigate();
 
-const handleLogout = () => {
-  localStorage.clear();
-  alert('Logged out Successfully')
-  navigate('/' ,{replace:true})
-
-}
-
+  const handleLogout = () => {
+    localStorage.clear();
+    alert("Logged out Successfully");
+    navigate("/", { replace: true });
+  };
 
   return (
     <div>
@@ -27,7 +24,10 @@ const handleLogout = () => {
               alt="Logo"
               className="d-inline-block align-text-top logo"
             />
-            <span className="header ms-3">BookTicket</span>
+            <Link to="/home" className="link-without-underline">
+              <span className="header ms-3">BookTicket</span>
+            </Link>
+
             <span className="header ms-3">MyTickets</span>
             <span className="header ms-3">About</span>
             <span className="header ms-3">Contact</span>
@@ -35,7 +35,9 @@ const handleLogout = () => {
           <span>
             {" "}
             {/* Logout button */}
-            <button onClick={handleLogout} className="ms-1 signout">Logout</button>
+            <button onClick={handleLogout} className="ms-1 signout">
+              Logout
+            </button>
           </span>
         </div>
       </nav>

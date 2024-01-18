@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./home.css";
+import { AiOutlineSwap } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 //importing images from assests
 import mainimg from "../../assets/main-image.png";
@@ -14,6 +16,62 @@ import bangkok from "../../assets/bangkok.jpeg";
 import kochi from "../../assets/kochi.jpeg";
 
 function Home() {
+  const now = new Date();
+  const max = new Date(now.getFullYear(), now.getMonth() + 12, now.getDate());
+
+  const navigate = useNavigate();
+
+  const [selectedDeparture, setSelectedDeparture] = useState("");
+  const [selectedArrival, setSelectedArrival] = useState("");
+
+  const handleBookNowClick = (departure, arrival) => {
+    setSelectedDeparture(departure);
+    setSelectedArrival(arrival);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    // Custom validation for departure and arrival
+    if (
+      selectedDeparture === "" ||
+      selectedArrival === "" ||
+      selectedDeparture === selectedArrival
+    ) {
+      alert("Please select valid departure and arrival locations.");
+      return;
+    }
+
+    const departure = form.querySelector("#departureLocation");
+    const arrival = form.querySelector("#arrivalLocation");
+    if (
+      departure.value === "" ||
+      arrival.value === "" ||
+      departure.value === arrival.value
+    ) {
+      alert("Please select valid departure and arrival locations.");
+      return;
+    }
+
+    // Custom validation for date
+    const date = form.querySelector("#departure");
+    if (new Date(date.value) < now || new Date(date.value) > max) {
+      alert("Please select a valid date.");
+      return;
+    }
+
+    // Custom validation for adults count
+    const adultsCount = form.querySelector("#adultsCount");
+    if (parseInt(adultsCount.value, 5) < 1) {
+      alert("Please select at least one adult.");
+      return;
+    }
+    navigate("/bookticket");
+  };
+
   return (
     <div className="home-container">
       {/* image container */}
@@ -22,18 +80,103 @@ function Home() {
       </div>
 
       {/* form fields */}
-      <form className="form-container">
-        <div className="form-fields">
-          <span>
-            <input type="text" id="from" placeholder="Departure" />
-          </span>
-          <span>
-            <input type="text" id="to" placeholder="Arrival" />
-          </span>
+      <form className="form-container" onSubmit={handleSearch}>
+        <div className="form-fields d-flex align-items-center">
+          <div className="d-flex align-items-center">
+            <select
+              className="form-select form-select-sm mx-2 custom-select-width"
+              aria-label=".form-select-sm example"
+              id="departureLocation"
+              required
+              value={selectedDeparture} // bind value to selectedDeparture
+              onChange={(e) => setSelectedDeparture(e.target.value)}
+            >
+              <option value="" disabled selected>
+                Departure
+              </option>
+              <option value="chennai">Chennai</option>
+              <option value="coimbatore">Coimbatore</option>
+              <option value="madurai">Madurai</option>
+              <option value="trichy">Trichy</option>
+            </select>
+          </div>
+          <div className="d-flex align-items-center mx-1">
+            <AiOutlineSwap className="text-center" />
+          </div>
+          <div className="d-flex align-items-center">
+            <select
+              className="form-select form-select-sm custom-select-width"
+              aria-label=".form-select-sm example"
+              id="arrivalLocation"
+              required
+              value={selectedArrival} // bind value to selectedArrival
+              onChange={(e) => setSelectedArrival(e.target.value)}
+            >
+              <option value="" disabled selected>
+                Arrival
+              </option>
+              <option value="coimbatore">Coimbatore</option>
+              <option value="london">London</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="bangalore">Bangalore</option>
+              <option value="bangkok">Bangkok</option>
+              <option value="kochi">Kochi</option>
+              <option value="chennai">Chennai</option>
+            </select>
+          </div>
+          <input
+            type="date"
+            id="departure"
+            placeholder="Departure"
+            min={now.toISOString().split("T")[0]}
+            max={max.toISOString().split("T")[0]}
+            className="date custom-date-width form-control"
+            required
+          />
+          {/* <div class="modal-dialog modal-xl">passeneger and Classes</div> */}
 
-          <input type="date" id="departure" placeholder="Departure" />
-          {/* <input type="date" id="return" placeholder="Return" /> */}
-          <button type="submit" className="search">
+          <select
+            className="form-select form-select-sm mx-2 custom-select-width"
+            aria-label=".form-select-sm example"
+            id="adultsCount"
+            required
+          >
+            <option value="" disabled selected>
+              Adults (count)
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          <select
+            className="form-select form-select-sm mx-2 custom-select-width"
+            aria-label=".form-select-sm example"
+            required
+          >
+            <option value="" disabled selected>
+              Child (under 18)
+            </option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+
+          <select
+            className="form-select form-select-sm mx-2 custom-select-width"
+            aria-label=".form-select-sm example"
+            required
+          >
+            <option value="Economy">Economy</option>
+            <option value="Business">Business</option>
+            <option value="super economy">Super Economy</option>
+          </select>
+
+          <button type="submit" className="search btn btn-primary">
             Search
           </button>
         </div>
@@ -45,7 +188,7 @@ function Home() {
           <span>
             <img src={img1} alt="1" />
             <div>
-              <br/>
+              <br />
               <h4>One search, all the flights</h4>
               <p className="desc">
                 Kiwi-Code finds cheap flights other sites can't see.
@@ -93,8 +236,17 @@ function Home() {
                 style={{ width: "100%", height: "200px" }} // Adjust the height as needed
               />
               <div className="card-body">
-                <p className="card-text">Chennai To Coimbatore</p>
-                <button>Book Now</button>
+                <hr />
+                <p className="card-text text-center">
+                  Chennai <AiOutlineSwap /> Coimbatore
+                </p>
+                <button
+                  onClick={() => {
+                    handleBookNowClick("chennai", "coimbatore");
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>
@@ -108,8 +260,17 @@ function Home() {
                 style={{ width: "100%", height: "200px" }}
               />
               <div className="card-body">
-                <p className="card-text">Chennai To London</p>
-                <button>Book Now</button>
+                <hr />
+                <p className="card-text text-center">
+                  Chennai <AiOutlineSwap /> London
+                </p>
+                <button
+                  onClick={() => {
+                    handleBookNowClick("chennai", "london");
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>
@@ -123,8 +284,17 @@ function Home() {
                 style={{ width: "100%", height: "200px" }}
               />
               <div className="card-body">
-                <p className="card-text">Chennai To Mumbai</p>
-                <button>Book Now</button>
+                <hr />
+                <p className="card-text text-center">
+                  Chennai <AiOutlineSwap /> Mumbai
+                </p>
+                <button
+                  onClick={() => {
+                    handleBookNowClick("chennai", "mumbai");
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>
@@ -138,8 +308,17 @@ function Home() {
                 style={{ width: "100%", height: "200px" }}
               />
               <div className="card-body">
-                <p className="card-text">Chennai To Bangalore</p>
-                <button>Book Now</button>
+                <hr />
+                <p className="card-text text-center">
+                  Chennai <AiOutlineSwap /> Bangalore
+                </p>
+                <button
+                  onClick={() => {
+                    handleBookNowClick("chennai", "bangalore");
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>
@@ -153,8 +332,17 @@ function Home() {
                 style={{ width: "100%", height: "200px" }}
               />
               <div className="card-body">
-                <p className="card-text">Chennai To Bangkok</p>
-                <button>Book Now</button>
+                <hr />
+                <p className="card-text text-center">
+                  Chennai <AiOutlineSwap /> Bangkok
+                </p>
+                <button
+                  onClick={() => {
+                    handleBookNowClick("chennai", "bangkok");
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>
@@ -168,8 +356,17 @@ function Home() {
                 style={{ width: "100%", height: "200px" }}
               />
               <div className="card-body">
-                <p className="card-text">Chennai To Kochi</p>
-                <button>Book Now</button>
+                <hr />
+                <p className="card-text text-center">
+                  Chennai <AiOutlineSwap /> Kochi
+                </p>
+                <button
+                  onClick={() => {
+                    handleBookNowClick("chennai", "kochi");
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
             </div>
           </div>

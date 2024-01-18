@@ -5,6 +5,7 @@ import Reset from "./components/reset-password/Reset";
 import GetStarted from "./components/getstartedpage/GetStarted";
 import ResetEmail from "./components/reset-email/ResetEmail";
 import Homepage from "./Homepage";
+import BookTicketPage from './BookTicketPage';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/resetPassword/:token" element={<Reset />} />
         <Route path="/resetPasswordemail" element={<ResetEmail />} />
         <Route path="/home" element={<Homepage />} />
+        <Route path='/bookticket' element={<BookTicketPage/>}/>
       </Routes>
       
     </>

@@ -11,7 +11,23 @@
   color: black;
   transition: color 0.3s ease;
   font-weight: 700;
+
 }
+
+.link-without-underline {
+  text-decoration: none;
+  color: #008774; /* Default color and color for hover and active states */
+}
+
+.link-without-underline:visited {
+  color: #0dcbb2; /* Set the color for visited links */
+}
+
+.link-without-underline:hover,
+.link-without-underline:active {
+  color: #008774; /* Set the color for hover and active states */
+}
+
 
 .header:hover {
   color: #008774;
