@@ -19,7 +19,9 @@ function App() {
         <Route path="/resetPassword/:token" element={<Reset />} />
         <Route path="/resetPasswordemail" element={<ResetEmail />} />
         <Route path="/home" element={<Homepage />} />
-        <Route path='/bookticket' element={<BookTicketPage/>}/>
+        {/* <Route path='/bookticket' element={<BookTicketPage/>}/> */}
+        <Route path="/bookticket/:departure/:arrival/:flightClass" element={<BookTicketPage />} />
+
       </Routes>
       
     </>

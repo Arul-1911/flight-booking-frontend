@@ -23,6 +23,96 @@
     border-radius: 30px;
     
   }
+
+  .flight-details-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+
+  .duration {
+    margin-bottom: 12px;
+  }
+  
+  .departure-arrival-time {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 12px;
+  }
+  
+  .departure-time, .arrival-time {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .airline-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .airline-info img {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px; /* Adjust the size as needed */
+    margin-right: 12px;
+    border-radius: 50%;
+  }
+  
+  .airline-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .departure-arrival {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .departure, .arrival {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    margin: 0 12px;
+    font-size: 20px;
+  }
+  
+  .date-price {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  
+  .date, .price {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #ff4500; /* or any other color you prefer for the price */
+  }
+  
+  .book-now {
+    background-color: #008774;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .book-now:hover {
+    background-color:  #008774;
+  }
+  
   
   /* Media queries for responsiveness */
   @media (max-width: 768px) {

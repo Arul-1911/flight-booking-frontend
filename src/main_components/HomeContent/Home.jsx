@@ -17,59 +17,50 @@ import kochi from "../../assets/kochi.jpeg";
 
 function Home() {
   const now = new Date();
-  const max = new Date(now.getFullYear(), now.getMonth() + 12, now.getDate());
+const max = new Date(now.getFullYear() + 1, now.getMonth(), now.getDate()); // Adding 1 year to the current date
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
-  const [selectedDeparture, setSelectedDeparture] = useState("");
-  const [selectedArrival, setSelectedArrival] = useState("");
+const [selectedDeparture, setSelectedDeparture] = useState("");
+const [selectedArrival, setSelectedArrival] = useState("");
 
-  const handleBookNowClick = (departure, arrival) => {
-    setSelectedDeparture(departure);
-    setSelectedArrival(arrival);
+const handleBookNowClick = (departure, arrival) => {
+  setSelectedDeparture(departure);
+  setSelectedArrival(arrival);
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
-  const handleSearch = (event) => {
-    event.preventDefault();
+const handleSearch = (event) => {
+  event.preventDefault();
 
-    const form = event.target;
-    // Custom validation for departure and arrival
-    if (
-      selectedDeparture === "" ||
-      selectedArrival === "" ||
-      selectedDeparture === selectedArrival
-    ) {
-      alert("Please select valid departure and arrival locations.");
-      return;
-    }
+  const form = event.target;
+  const departure = form.querySelector("#departureLocation").value;
+  const arrival = form.querySelector("#arrivalLocation").value;
+  const flightClass = form.querySelector("#flightClass").value;
 
-    const departure = form.querySelector("#departureLocation");
-    const arrival = form.querySelector("#arrivalLocation");
-    if (
-      departure.value === "" ||
-      arrival.value === "" ||
-      departure.value === arrival.value
-    ) {
-      alert("Please select valid departure and arrival locations.");
-      return;
-    }
+  // Custom validation for departure and arrival
+  if (departure === "" || arrival === "" || departure === arrival) {
+    alert("Please select valid departure and arrival locations.");
+    return;
+  }
 
-    // Custom validation for date
-    const date = form.querySelector("#departure");
-    if (new Date(date.value) < now || new Date(date.value) > max) {
-      alert("Please select a valid date.");
-      return;
-    }
+  // Custom validation for date
+  const date = form.querySelector("#departure").value;
+  if (new Date(date) < now || new Date(date) > max) {
+    alert("Please select a valid date.");
+    return;
+  }
 
-    // Custom validation for adults count
-    const adultsCount = form.querySelector("#adultsCount");
-    if (parseInt(adultsCount.value, 5) < 1) {
-      alert("Please select at least one adult.");
-      return;
-    }
-    navigate("/bookticket");
+  // Custom validation for adults count
+  const adultsCount = form.querySelector("#adultsCount").value;
+  if (parseInt(adultsCount, 10) < 1) {
+    alert("Please select at least one adult.");
+    return;
+  }
+
+  const url = `/bookticket/${departure}/${arrival}/${flightClass}`;
+  navigate(url);
   };
 
   return (
@@ -121,7 +112,6 @@ function Home() {
               <option value="bangalore">Bangalore</option>
               <option value="bangkok">Bangkok</option>
               <option value="kochi">Kochi</option>
-              <option value="chennai">Chennai</option>
             </select>
           </div>
           <input
@@ -170,10 +160,11 @@ function Home() {
             className="form-select form-select-sm mx-2 custom-select-width"
             aria-label=".form-select-sm example"
             required
+            id="flightClass"
           >
             <option value="Economy">Economy</option>
             <option value="Business">Business</option>
-            <option value="super economy">Super Economy</option>
+
           </select>
 
           <button type="submit" className="search btn btn-primary">
