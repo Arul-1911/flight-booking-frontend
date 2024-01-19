@@ -27,7 +27,9 @@ const FlightDetails = ({ flight }) => {
         <span className="departure-time">
           Departure Time: {flight.departure_time}
         </span>
-        <span className="arrival-time">Arrival Time: {flight.arrival_time}</span>
+        <span className="arrival-time">
+          Arrival Time: {flight.arrival_time}
+        </span>
       </div>
       <button className="book-now">Book Now</button>
     </div>
@@ -38,32 +40,31 @@ function BookTicket() {
   const navigate = useNavigate();
   const { departure, arrival, flightClass } = useParams();
   const [flights, setFlights] = useState([]);
-  const [flightsFetchedSuccessfully, setFlightsFetchedSuccessfully] =
-    useState(true);
+  // const [flightsFetchedSuccessfully, setFlightsFetchedSuccessfully] = useState(true);
 
-    useEffect(() => {
-      const fetchFlights = async () => {
-        try {
-          const response = await axios.get(`${backendUrl}/flights`, {
-            params: {
-              departure,
-              arrival,
-              flightClass,
-            },
-          });
-          setFlights(response.data);
-          setFlightsFetchedSuccessfully(true);
-        } catch (error) {
-          console.error("Error fetching flight data:", error);
-          setFlightsFetchedSuccessfully(false);
-        }
-      };
-    
-      fetchFlights();
-    }, [departure, arrival, flightClass]);
-    
-    // console.log("flightsFetchedSuccessfully:", flightsFetchedSuccessfully);
-    // console.log("flights:", flights);
+  useEffect(() => {
+    const fetchFlights = async () => {
+      try {
+        const response = await axios.get(`${backendUrl}/flights`, {
+          params: {
+            departure,
+            arrival,
+            flightClass,
+          },
+        });
+        setFlights(response.data);
+        // setFlightsFetchedSuccessfully(true);
+      } catch (error) {
+        console.error("Error fetching flight data:", error);
+        // setFlightsFetchedSuccessfully(false);
+      }
+    };
+
+    fetchFlights();
+  }, [departure, arrival, flightClass]);
+
+  // console.log("flightsFetchedSuccessfully:", flightsFetchedSuccessfully);
+  // console.log("flights:", flights);
 
   const handleChange = () => {
     navigate("/home");
@@ -71,7 +72,7 @@ function BookTicket() {
 
   return (
     <div className="bookticket-container">
-      {flights.length > 0 ?  (
+      {flights.length > 0 ? (
         <div className="app-container">
           <h1>Flight Search Results</h1>
           {flights.map((flight, index) => (

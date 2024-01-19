@@ -88,7 +88,7 @@ const handleSearch = (event) => {
               <option value="chennai">Chennai</option>
               <option value="coimbatore">Coimbatore</option>
               <option value="madurai">Madurai</option>
-              <option value="trichy">Trichy</option>
+              {/* <option value="trichy">Trichy</option> */}
             </select>
           </div>
           <div className="d-flex align-items-center mx-1">
