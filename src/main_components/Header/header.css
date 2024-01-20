@@ -11,23 +11,27 @@
   color: black;
   transition: color 0.3s ease;
   font-weight: 700;
+}
 
+.navbar-brand {
+  display: flex;
+  align-items: center;
 }
 
 .link-without-underline {
   text-decoration: none;
-  color: #008774; /* Default color and color for hover and active states */
+  color: #008774;
+  margin-right: 10px; /* Adjust margin between links */
 }
 
 .link-without-underline:visited {
-  color: #0dcbb2; /* Set the color for visited links */
+  color: #0dcbb2;
 }
 
 .link-without-underline:hover,
 .link-without-underline:active {
-  color: #008774; /* Set the color for hover and active states */
+  color: #008774;
 }
-
 
 .header:hover {
   color: #008774;
@@ -38,7 +42,7 @@
   color: aliceblue;
   border-radius: 41px;
   font-size: small;
-  margin-right: 9px;
+  margin-left: 10px; /* Adjust margin from the right */
 }
 
 /* Responsive styles */
@@ -49,10 +53,11 @@
   }
 
   .header {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .signout {
     font-size: x-small;
+    margin-left: 5px; /* Adjust margin from the right for smaller screens */
   }
 }

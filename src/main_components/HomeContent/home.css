@@ -21,7 +21,7 @@
   flex-direction: column; /* Display items in a row by default */
   border: 1px solid black;
   width: 100%;
-  max-width: 900px;
+  max-width: 700px;
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -77,6 +77,10 @@ select {
   top: 0px;
   background-color: #008774;
   border: none;
+}
+
+.button{
+  background-color: #008774;
 }
 
 .three-image-container {

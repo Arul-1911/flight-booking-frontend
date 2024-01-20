@@ -3,11 +3,13 @@ import "./bookTicket.css"; // Make sure to include your CSS file
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import backendUrl from "../../Url/backendurl";
+import PassengerForm from "./PassengerForm";
+
 // import { AiOutlineSwap } from "react-icons/ai";
 import errimg from "../../assets/404 image.png";
 import flight_card_img from "../../assets/flight-details-card-img.jpg";
 
-const FlightDetails = ({ flight }) => {
+const FlightDetails = ({ flight, onBookNowClick }) => {
   return (
     <div className="flight-details-container">
       <div className="airline-info">
@@ -31,7 +33,9 @@ const FlightDetails = ({ flight }) => {
           Arrival Time: {flight.arrival_time}
         </span>
       </div>
-      <button className="book-now">Book Now</button>
+      <button className="book-now" onClick={() => onBookNowClick(flight)}>
+        Book Now
+      </button>
     </div>
   );
 };
@@ -40,7 +44,8 @@ function BookTicket() {
   const navigate = useNavigate();
   const { departure, arrival, flightClass } = useParams();
   const [flights, setFlights] = useState([]);
-  // const [flightsFetchedSuccessfully, setFlightsFetchedSuccessfully] = useState(true);
+  const [showPassengerForm, setShowPassengerForm] = useState(false);
+  const [selectedFlight, setSelectedFlight] = useState(null);
 
   useEffect(() => {
     const fetchFlights = async () => {
@@ -53,10 +58,8 @@ function BookTicket() {
           },
         });
         setFlights(response.data);
-        // setFlightsFetchedSuccessfully(true);
       } catch (error) {
         console.error("Error fetching flight data:", error);
-        // setFlightsFetchedSuccessfully(false);
       }
     };
 
@@ -66,30 +69,60 @@ function BookTicket() {
   // console.log("flightsFetchedSuccessfully:", flightsFetchedSuccessfully);
   // console.log("flights:", flights);
 
+  const handleBookNowClick = (flight) => {
+    setSelectedFlight(flight);
+    setShowPassengerForm(true);
+  };
+
+  const handleBackToBooking = () => {
+    setShowPassengerForm(false);
+  };
+
   const handleChange = () => {
     navigate("/home");
   };
 
   return (
     <div className="bookticket-container">
-      {flights.length > 0 ? (
+      {showPassengerForm ? (
+        <PassengerForm
+          selectedFlight={selectedFlight}
+          onBackToBooking={handleBackToBooking}
+          flightName={selectedFlight.plane_name}
+          price={selectedFlight.price}
+        />
+      ) : (
         <div className="app-container">
           <h1>Flight Search Results</h1>
-          {flights.map((flight, index) => (
-            <FlightDetails key={index} flight={flight} />
-          ))}
-        </div>
-      ) : (
-        <div className="container error-container">
-          <div className="row align-items-center">
-            <div className="col-12 text-center">
-              <img src={errimg} alt="error-display" className="error-image" />
-              <h1 className="error-text">No Flights found...</h1>
-              <button onClick={handleChange} className="back-to-booking mt-4">
-                Back To Booking
-              </button>
+          {flights.length > 0 ? (
+            flights.map((flight, index) => (
+              <FlightDetails
+                key={index}
+                flight={flight}
+                onBookNowClick={handleBookNowClick}
+              />
+            ))
+          ) : (
+            <div className="container error-container">
+              {/* ... (existing error handling code) */}
+              <div className="row align-items-center">
+                <div className="col-12 text-center">
+                  <img
+                    src={errimg}
+                    alt="error-display"
+                    className="error-image"
+                  />
+                  <h1 className="error-text">No Flights found...</h1>
+                  <button
+                    onClick={handleChange}
+                    className="back-to-booking mt-4"
+                  >
+                    Back To Booking
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>
@@ -97,3 +130,15 @@ function BookTicket() {
 }
 
 export default BookTicket;
+
+
+  /* {<div className="row align-items-center">
+<div className="col-12 text-center">
+  <img src={errimg} alt="error-display" className="error-image" />
+  <h1 className="error-text">No Flights found...</h1>
+  <button onClick={handleChange} className="back-to-booking mt-4">
+    Back To Booking
+  </button>
+</div>
+</div> */
+

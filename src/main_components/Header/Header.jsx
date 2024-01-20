@@ -29,9 +29,13 @@ function Header() {
             </Link>
 
             <span className="header ms-3">MyTickets</span>
-            <span className="header ms-3">About</span>
-            <span className="header ms-3">Contact</span>
-          </span>
+            <Link to="/about" className="link-without-underline">
+              <span className="header ms-3">About</span>
+            </Link>
+            <Link to="/contact" className="link-without-underline">
+              <span className="header ms-3">Contact</span>
+            </Link>
+            </span>
           <span>
             {" "}
             {/* Logout button */}

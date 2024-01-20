@@ -9,28 +9,28 @@ function Footer() {
     <div className="footer-section">
       <h4>Explore</h4>
       <ul>
-        <li><a href="/">Flights</a></li>
-        <li><a href="/">Destinations</a></li>
-        <li><a href="/">Deals</a></li>
-        <li><a href="/ ">Travel Guide</a></li>
+        <li><a href="/home">Flights</a></li>
+        <li><a href="/home">Destinations</a></li>
+        <li><a href="/home">Deals</a></li>
+        <li><a href="/home">Travel Guide</a></li>
       </ul>
     </div>
     <div className="footer-section">
       <h4>Learn More</h4>
       <ul>
-        <li><a href="/">About Us</a></li>
-        <li><a href="/">Contact Us</a></li>
-        <li><a href="/">FAQs</a></li>
-        <li><a href="/">Terms of Service</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/home">FAQs</a></li>
+        <li><a href="/home">Terms of Service</a></li>
       </ul>
     </div>
     <div className="footer-section">
       <h4>Connect</h4>
       <ul>
-        <li><a href="/">Facebook</a></li>
-        <li><a href="/">Twitter</a></li>
-        <li><a href="/">Instagram</a></li>
-        <li><a href="/">LinkedIn</a></li>
+        <li><a href="/home">Facebook</a></li>
+        <li><a href="/home">Twitter</a></li>
+        <li><a href="/home">Instagram</a></li>
+        <li><a href="/home">LinkedIn</a></li>
       </ul>
     </div>
   </div>

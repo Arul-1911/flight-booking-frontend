@@ -53,11 +53,11 @@ const handleSearch = (event) => {
   }
 
   // Custom validation for adults count
-  const adultsCount = form.querySelector("#adultsCount").value;
-  if (parseInt(adultsCount, 10) < 1) {
-    alert("Please select at least one adult.");
-    return;
-  }
+  // const adultsCount = form.querySelector("#adultsCount").value;
+  // if (parseInt(adultsCount, 10) < 1) {
+  //   alert("Please select at least one adult.");
+  //   return;
+  // }
 
   const url = `/bookticket/${departure}/${arrival}/${flightClass}`;
   navigate(url);
@@ -125,7 +125,7 @@ const handleSearch = (event) => {
           />
           {/* <div class="modal-dialog modal-xl">passeneger and Classes</div> */}
 
-          <select
+          {/* <select
             className="form-select form-select-sm mx-2 custom-select-width"
             aria-label=".form-select-sm example"
             id="adultsCount"
@@ -154,7 +154,7 @@ const handleSearch = (event) => {
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-          </select>
+          </select> */}
 
           <select
             className="form-select form-select-sm mx-2 custom-select-width"
@@ -231,7 +231,7 @@ const handleSearch = (event) => {
                 <p className="card-text text-center">
                   Chennai <AiOutlineSwap /> Coimbatore
                 </p>
-                <button
+                <button className="button"
                   onClick={() => {
                     handleBookNowClick("chennai", "coimbatore");
                   }}
@@ -255,7 +255,7 @@ const handleSearch = (event) => {
                 <p className="card-text text-center">
                   Chennai <AiOutlineSwap /> London
                 </p>
-                <button
+                <button className="button"
                   onClick={() => {
                     handleBookNowClick("chennai", "london");
                   }}
@@ -279,7 +279,7 @@ const handleSearch = (event) => {
                 <p className="card-text text-center">
                   Chennai <AiOutlineSwap /> Mumbai
                 </p>
-                <button
+                <button className="button"
                   onClick={() => {
                     handleBookNowClick("chennai", "mumbai");
                   }}
@@ -303,7 +303,7 @@ const handleSearch = (event) => {
                 <p className="card-text text-center">
                   Chennai <AiOutlineSwap /> Bangalore
                 </p>
-                <button
+                <button className="button"
                   onClick={() => {
                     handleBookNowClick("chennai", "bangalore");
                   }}
@@ -327,7 +327,7 @@ const handleSearch = (event) => {
                 <p className="card-text text-center">
                   Chennai <AiOutlineSwap /> Bangkok
                 </p>
-                <button
+                <button className="button"
                   onClick={() => {
                     handleBookNowClick("chennai", "bangkok");
                   }}
@@ -351,7 +351,7 @@ const handleSearch = (event) => {
                 <p className="card-text text-center">
                   Chennai <AiOutlineSwap /> Kochi
                 </p>
-                <button
+                <button className="button"
                   onClick={() => {
                     handleBookNowClick("chennai", "kochi");
                   }}
