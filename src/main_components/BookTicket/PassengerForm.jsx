@@ -9,6 +9,7 @@ const PassengerForm = ({
   onBackToBooking,
   flightName,
   price,
+  date
 }) => {
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
@@ -49,6 +50,7 @@ const navigate = useNavigate();
       mainPassenger,
       flightName,
       price,
+      date
     };
     console.log("Travel details submitted:", travelDetails);
     // After handling submission, you can navigate to a confirmation page or perform other actions
@@ -87,8 +89,9 @@ const navigate = useNavigate();
       <h2 className="passenger-heading">Passenger Details</h2>
       <div className="flight-details">
         <p>
-          <b>Flight:</b> {flightName}, <b>Price:</b> {price}
+          <b>Flight:</b> {flightName}, <b>Price:</b> {price} <b>date:</b> {date}
         </p>
+        
       </div>
       <form className="passenger-form" onSubmit={handleSubmit}>
         <label htmlFor="adultCount">Number of Adults:</label>

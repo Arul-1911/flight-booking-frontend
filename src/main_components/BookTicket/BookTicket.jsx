@@ -94,6 +94,7 @@ function BookTicket() {
           onBackToBooking={handleBackToBooking}
           flightName={selectedFlight.plane_name}
           price={selectedFlight.price}
+          date={selectedDate}
         />
       ) : (
         <div className="app-container">
