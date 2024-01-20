@@ -68,7 +68,7 @@ function BookTicket() {
     };
 
     fetchFlights();
-  }, [departure, arrival, flightClass]);
+  }, [departure, arrival, flightClass, date]);
 
   // console.log("flightsFetchedSuccessfully:", flightsFetchedSuccessfully);
   // console.log("flights:", flights);
