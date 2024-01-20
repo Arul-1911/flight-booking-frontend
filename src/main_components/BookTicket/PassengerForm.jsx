@@ -84,7 +84,7 @@ const navigate = useNavigate();
 
   return (
     <div className="passenger-form-container">
-      <h1 className="passenger-heading">Passenger Details</h1>
+      <h2 className="passenger-heading">Passenger Details</h2>
       <div className="flight-details">
         <p>
           <b>Flight:</b> {flightName}, <b>Price:</b> {price}

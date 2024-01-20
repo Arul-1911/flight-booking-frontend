@@ -9,7 +9,7 @@ import PassengerForm from "./PassengerForm";
 import errimg from "../../assets/404 image.png";
 import flight_card_img from "../../assets/flight-details-card-img.jpg";
 
-const FlightDetails = ({ flight, onBookNowClick }) => {
+const FlightDetails = ({ flight,selectedDate, onBookNowClick }) => {
   return (
     <div className="flight-details-container">
       <div className="airline-info">
@@ -22,7 +22,7 @@ const FlightDetails = ({ flight, onBookNowClick }) => {
         <span className="arrival">{flight.arrival}</span>
       </div>
       <div className="date-price">
-        <span className="date">{flight.departure_date}</span>
+        <span className="date">{selectedDate}</span>
         <span className="price">Rs.{flight.price}</span>
       </div>
       <div className="departure-arrival-time">
@@ -42,10 +42,11 @@ const FlightDetails = ({ flight, onBookNowClick }) => {
 
 function BookTicket() {
   const navigate = useNavigate();
-  const { departure, arrival, flightClass } = useParams();
+  const { departure, arrival, flightClass,date } = useParams();
   const [flights, setFlights] = useState([]);
   const [showPassengerForm, setShowPassengerForm] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
     const fetchFlights = async () => {
@@ -55,9 +56,12 @@ function BookTicket() {
             departure,
             arrival,
             flightClass,
+            date
+            
           },
         });
         setFlights(response.data);
+        setSelectedDate(date);
       } catch (error) {
         console.error("Error fetching flight data:", error);
       }
@@ -99,6 +103,7 @@ function BookTicket() {
               <FlightDetails
                 key={index}
                 flight={flight}
+                selectedDate={selectedDate}
                 onBookNowClick={handleBookNowClick}
               />
             ))

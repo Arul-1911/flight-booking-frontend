@@ -24,7 +24,7 @@ function App() {
         <Route path="/resetPasswordemail" element={<ResetEmail />} />
         <Route path="/home" element={<Homepage />} />
         {/* <Route path='/bookticket' element={<BookTicketPage/>}/> */}
-        <Route path="/bookticket/:departure/:arrival/:flightClass" element={<BookTicketPage />} />
+        <Route path="/bookticket/:departure/:arrival/:flightClass/:date" element={<BookTicketPage />} />
         <Route path="/seatBooking" element={<SeatBooking />} />
         <Route path="/payment" element={<Paymentgateway />} />
         <Route path="/about" element={<About/>} />

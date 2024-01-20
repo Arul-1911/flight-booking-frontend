@@ -38,6 +38,7 @@ const handleSearch = (event) => {
   const departure = form.querySelector("#departureLocation").value;
   const arrival = form.querySelector("#arrivalLocation").value;
   const flightClass = form.querySelector("#flightClass").value;
+  // const date = form.querySelector("#departure").value;
 
   // Custom validation for departure and arrival
   if (departure === "" || arrival === "" || departure === arrival) {
@@ -59,7 +60,7 @@ const handleSearch = (event) => {
   //   return;
   // }
 
-  const url = `/bookticket/${departure}/${arrival}/${flightClass}`;
+  const url = `/bookticket/${departure}/${arrival}/${flightClass}/${date}`;
   navigate(url);
   };
 
