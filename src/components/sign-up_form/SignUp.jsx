@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import backendUrl from "../../Url/backendurl";
+import './style.css'
 
 function SignUp() {
   const navigate = useNavigate();
@@ -102,7 +103,7 @@ function SignUp() {
                   className="error-message"
                 />
               </div>
-              <button type="submit" disabled={loading} className="mb-2">
+              <button type="submit" disabled={loading} className="mb-1 submit">
                 Sign Up
               </button>
               <p>

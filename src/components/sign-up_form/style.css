@@ -31,12 +31,13 @@ button {
   border-radius: 20px;
 }
 
-button {
+.submit {
   background-color:#008774;
   color: white;
   border: none;
   border-radius: 14px;
   cursor: pointer;
+  border-radius: 120px;
 }
 
 .error-message {

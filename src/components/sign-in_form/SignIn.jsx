@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import backendUrl from "../../Url/backendurl";
 import axios from "axios";
 import LoaderSpinner from "../../LoaderSpinner"; // Adjust the import path
+import './style.css'
 
 function SignIn() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -104,9 +105,9 @@ function SignIn() {
                   />
                 </div>
 
-                <button type="submit" className="mt-3" >Sign In</button>
+                <button type="submit" className="mt-2 mb-2 submit" >Sign In</button>
                 <div>
-                  <p className="mb-2">
+                  <p className="mb-3">
                     <Link to="/resetpasswordemail" >Forgot Password?</Link>
                   </p>
                   <p>

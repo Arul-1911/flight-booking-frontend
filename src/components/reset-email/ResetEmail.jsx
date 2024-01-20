@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Link} from "react-router-dom";
 import axios from "axios";
 import backendUrl from "../../Url/backendurl";
+import './style.css'
 
 function ResetEmail() {
   const [successMessage, setSuccessMessage] = useState("");
@@ -77,7 +78,7 @@ function ResetEmail() {
               />
             </div>
 
-            <button type="submit">Send Reset Link</button>
+            <button type="submit" className="mb-1 submit">Send Reset Link</button>
             <div>
               <p className="mt-3">
                 Remember your password? <Link to="/signin">Login!</Link>
