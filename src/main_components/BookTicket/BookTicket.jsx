@@ -9,7 +9,7 @@ import PassengerForm from "./PassengerForm";
 import errimg from "../../assets/404 image.png";
 import flight_card_img from "../../assets/flight-details-card-img.jpg";
 
-const FlightDetails = ({ flight,selectedDate, onBookNowClick }) => {
+const FlightDetails = ({ flight, selectedDate, onBookNowClick }) => {
   return (
     <div className="flight-details-container">
       <div className="airline-info">
@@ -42,7 +42,7 @@ const FlightDetails = ({ flight,selectedDate, onBookNowClick }) => {
 
 function BookTicket() {
   const navigate = useNavigate();
-  const { departure, arrival, flightClass,date } = useParams();
+  const { departure, arrival, flightClass, date } = useParams();
   const [flights, setFlights] = useState([]);
   const [showPassengerForm, setShowPassengerForm] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState(null);
@@ -56,8 +56,7 @@ function BookTicket() {
             departure,
             arrival,
             flightClass,
-            date
-            
+            date,
           },
         });
         setFlights(response.data);
@@ -98,7 +97,6 @@ function BookTicket() {
         />
       ) : (
         <div className="app-container">
-          <h1>Flight Search Results</h1>
           {flights.length > 0 ? (
             flights.map((flight, index) => (
               <FlightDetails
@@ -137,8 +135,7 @@ function BookTicket() {
 
 export default BookTicket;
 
-
-  /* {<div className="row align-items-center">
+/* {<div className="row align-items-center">
 <div className="col-12 text-center">
   <img src={errimg} alt="error-display" className="error-image" />
   <h1 className="error-text">No Flights found...</h1>
@@ -147,4 +144,3 @@ export default BookTicket;
   </button>
 </div>
 </div> */
-
