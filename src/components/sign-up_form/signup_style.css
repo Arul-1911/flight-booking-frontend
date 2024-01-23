@@ -56,7 +56,7 @@ button {
 .error-message {
   color: #e74c3c;
   margin-top: -2px;
-  /* text-align: left; */
+
 }
 
 /* Style the error message specifically for email */
@@ -84,12 +84,11 @@ button {
   text-decoration: underline;
 }
 
-/* Your existing styles */
+
 
 @media screen and (max-width: 600px) {
   .auth-form {
     width: 80%; /* Adjust width for smaller screens */
   }
 
-  /* Add additional styles or adjustments for smaller screens if needed */
 }

@@ -13,15 +13,15 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* style for password show/hide */
+/* style.css */
 .password-container {
   position: relative;
 }
 
 .password-icon {
   position: absolute;
-  top: 47%;
-  transform: translateY(-40%);
+  top: 50%;
+  transform: translateY(-50%);
   right: 10px;
   cursor: pointer;
 }

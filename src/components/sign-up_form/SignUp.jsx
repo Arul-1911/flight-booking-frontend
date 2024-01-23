@@ -4,11 +4,11 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import backendUrl from "../../Url/backendurl";
-import './style.css';
+import './signup_style.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-// ... (previous imports)
+//( imports)
 
 function SignUp() {
   const navigate = useNavigate();
@@ -64,6 +64,7 @@ function SignUp() {
       <div className="body">
         <div className="auth-form">
           <h2>Register</h2>
+          <br/>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

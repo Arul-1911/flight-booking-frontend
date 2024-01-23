@@ -23,7 +23,7 @@ const navigate = useNavigate();
   });
 
   const onSubmit = async (values, {setSubmitting}) => {
-    // Implement reset password logic
+    // reset password logic
    try {
     const response = await axios.post(`${backendUrl}/auth/reset-password`, values);
     console.log('password reset response ', response.data);

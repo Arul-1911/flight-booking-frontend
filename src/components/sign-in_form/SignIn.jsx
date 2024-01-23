@@ -1,6 +1,5 @@
 // SignIn.jsx
 import React, { useState } from "react";
-import "./style.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
@@ -9,7 +8,7 @@ import axios from "axios";
 import LoaderSpinner from "../../LoaderSpinner"; // Adjust the import path
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import "./style.css";
+import "./signin_style.css";
 
 function SignIn() {
   const [errorMessage, setErrorMessage] = useState("");
@@ -56,7 +55,7 @@ function SignIn() {
       setTimeout(() => {
         setLoading(false);
         setSubmitting(false);
-      }, 2000); // 2000 milliseconds (2 seconds) delay
+      }, 2000); // (2 seconds) delay
     }
   };
 
@@ -65,15 +64,18 @@ function SignIn() {
   };
 
   return (
-    <div className="body">
+    <div>
       {loading ? (
         <LoaderSpinner
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop:"300px"
           }}
+       
         />
+        
       ) : (
         <div className="body">
           <div className="auth-form">
