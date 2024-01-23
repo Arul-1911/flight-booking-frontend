@@ -8,8 +8,9 @@ const PassengerForm = ({
   selectedFlight,
   onBackToBooking,
   flightName,
+  flightClass,
   price,
-  date
+  date,
 }) => {
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
@@ -19,11 +20,10 @@ const PassengerForm = ({
     age: "",
     gender: "",
     luggage: "",
+    phoneNumber: "",
   });
 
-const navigate = useNavigate();
-
-
+  const navigate = useNavigate();
 
   const handleChangeCount = (e) => {
     const { name, value } = e.target;
@@ -49,8 +49,10 @@ const navigate = useNavigate();
       children: childCount,
       mainPassenger,
       flightName,
+      flightClass,
       price,
-      date
+      date,
+      
     };
     console.log("Travel details submitted:", travelDetails);
     // After handling submission, you can navigate to a confirmation page or perform other actions
@@ -74,8 +76,7 @@ const navigate = useNavigate();
       console.log("Server response:", response.data);
       // After handling submission, you can navigate to a confirmation page or perform other actions
 
-      navigate('/seatBooking')
-      
+      navigate("/seatBooking");
     } catch (error) {
       console.error("Error submitting travel details:", error.message);
       // Handle the error
@@ -89,9 +90,9 @@ const navigate = useNavigate();
       <h2 className="passenger-heading">Passenger Details</h2>
       <div className="flight-details">
         <p>
-          <b>Flight:</b> {flightName}, <b>Price:</b> {price} <b>date:</b> {date}
+          <b>Flight:</b> {flightName}, <b>Price:</b> {price} <br />
+          <b>Date:</b> {date}, <b>Class:</b> {flightClass}
         </p>
-        
       </div>
       <form className="passenger-form" onSubmit={handleSubmit}>
         <label htmlFor="adultCount">Number of Adults:</label>
@@ -125,8 +126,7 @@ const navigate = useNavigate();
         </select>
 
         <div className="main-passenger-details">
-          <h4>Main Passenger Details</h4>
-          <br />
+          <h4>Contact Details:</h4>
           <label htmlFor="mainName">Name:</label>
           <input
             type="text"
@@ -134,6 +134,18 @@ const navigate = useNavigate();
             name="mainName"
             value={mainPassenger.name}
             onChange={(e) => handleChangeMainPassenger("name", e.target.value)}
+            required
+          />
+
+          <label htmlFor="mainPhoneNumber">Phone Number:</label>
+          <input
+            type="number"
+            id="mainPhoneNumber"
+            name="mainPhoneNumber"
+            value={mainPassenger.phoneNumber}
+            onChange={(e) =>
+              handleChangeMainPassenger("phoneNumber", e.target.value)
+            }
             required
           />
 

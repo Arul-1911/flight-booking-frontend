@@ -9,7 +9,12 @@ import PassengerForm from "./PassengerForm";
 import errimg from "../../assets/404 image.png";
 import flight_card_img from "../../assets/flight-details-card-img.jpg";
 
-const FlightDetails = ({ flight, selectedDate, onBookNowClick }) => {
+const FlightDetails = ({
+  flight,
+  selectedDate,
+  onBookNowClick,
+  flightClass,
+}) => {
   return (
     <div className="flight-details-container">
       <div className="airline-info">
@@ -24,6 +29,7 @@ const FlightDetails = ({ flight, selectedDate, onBookNowClick }) => {
       <div className="date-price">
         <span className="date">{selectedDate}</span>
         <span className="price">Rs.{flight.price}</span>
+        
       </div>
       <div className="departure-arrival-time">
         <span className="departure-time">
@@ -32,7 +38,9 @@ const FlightDetails = ({ flight, selectedDate, onBookNowClick }) => {
         <span className="arrival-time">
           Arrival Time: {flight.arrival_time}
         </span>
+        <span className="class">{flightClass}</span>
       </div>
+      
       <button className="book-now" onClick={() => onBookNowClick(flight)}>
         Book Now
       </button>
@@ -94,6 +102,7 @@ function BookTicket() {
           flightName={selectedFlight.plane_name}
           price={selectedFlight.price}
           date={selectedDate}
+          flightClass={flightClass}
         />
       ) : (
         <div className="app-container">
@@ -104,6 +113,7 @@ function BookTicket() {
                 flight={flight}
                 selectedDate={selectedDate}
                 onBookNowClick={handleBookNowClick}
+                flightClass={flightClass}
               />
             ))
           ) : (

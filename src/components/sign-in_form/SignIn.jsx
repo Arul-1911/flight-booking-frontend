@@ -7,11 +7,14 @@ import * as Yup from "yup";
 import backendUrl from "../../Url/backendurl";
 import axios from "axios";
 import LoaderSpinner from "../../LoaderSpinner"; // Adjust the import path
-import './style.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import "./style.css";
 
 function SignIn() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
   const initialValues = {
@@ -30,7 +33,7 @@ function SignIn() {
       setSubmitting(true);
 
       // Simulate a delay before making the API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Make the API call to authenticate user and obtain token
       const response = await axios.post(`${backendUrl}/auth/signin`, values);
@@ -56,12 +59,22 @@ function SignIn() {
       }, 2000); // 2000 milliseconds (2 seconds) delay
     }
   };
-  
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className="body">
-      {loading ? <LoaderSpinner style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} />
- : (
+      {loading ? (
+        <LoaderSpinner
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        />
+      ) : (
         <div className="body">
           <div className="auth-form">
             <h2>Login</h2>
@@ -91,12 +104,17 @@ function SignIn() {
                   />
                 </div>
 
-                <div className="mb-2">
+                <div className="mb-2 password-container">
                   <Field
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
-                    placeholder="password"
+                    placeholder="Password"
+                  />
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEye : faEyeSlash}
+                    className="password-icon"
+                    onClick={togglePasswordVisibility}
                   />
                   <ErrorMessage
                     name="password"
@@ -104,11 +122,14 @@ function SignIn() {
                     className="error-message"
                   />
                 </div>
+             
 
-                <button type="submit" className="mt-2 mb-2 submit" >Sign In</button>
+                <button type="submit" className="mt-2 mb-2 submit">
+                  Sign In
+                </button>
                 <div>
                   <p className="mb-3">
-                    <Link to="/resetpasswordemail" >Forgot Password?</Link>
+                    <Link to="/resetpasswordemail">Forgot Password?</Link>
                   </p>
                   <p>
                     Don't have an account? <Link to="/signup">Register!</Link>

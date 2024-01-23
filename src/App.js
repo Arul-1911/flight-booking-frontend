@@ -10,6 +10,7 @@ import SeatBooking from "./main_components/BookTicket/SeatBooking";
 import Paymentgateway from "./main_components/payment/Paymentgateway";
 import About from "./main_components/Header/About";
 import Contact from "./main_components/Header/Contact";
+import ErrorPage from "./components/error404page/ErrorPage";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/payment" element={<Paymentgateway />} />
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
+        <Route path="/errorpage" element={<ErrorPage/>} />
 
       </Routes>
       

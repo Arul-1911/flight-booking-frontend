@@ -14,6 +14,11 @@ function Header() {
     navigate("/", { replace: true });
   };
 
+   const handleLogoClick = () => {
+    navigate("/home")
+   }
+
+
   return (
     <div>
       <nav className="navbar bg-body-tertiary">
@@ -23,6 +28,7 @@ function Header() {
               src={logo}
               alt="Logo"
               className="d-inline-block align-text-top logo"
+              onClick={handleLogoClick}
             />
             <Link to="/home" className="link-without-underline">
               <span className="header ms-3">BookTicket</span>

@@ -40,6 +40,19 @@ button {
   border-radius: 120px;
 }
 
+/* style for password show/hide */
+.password-container {
+  position: relative;
+}
+
+.password-icon {
+  position: absolute;
+  top: 46%;
+  transform: translateY(-70%);
+  right: 10px;
+  cursor: pointer;
+}
+
 .error-message {
   color: #e74c3c;
   margin-top: -2px;
