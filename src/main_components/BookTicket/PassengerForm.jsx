@@ -5,7 +5,6 @@ import backendUrl from "../../Url/backendurl";
 import { useNavigate } from "react-router-dom";
 
 const PassengerForm = ({
-  selectedFlight,
   onBackToBooking,
   flightName,
   flightClass,
@@ -15,12 +14,18 @@ const PassengerForm = ({
   const [adultCount, setAdultCount] = useState(1);
   const [childCount, setChildCount] = useState(0);
 
-  const [mainPassenger, setMainPassenger] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    luggage: "",
-    phoneNumber: "",
+  const [passengerDetails, setPassengerDetails] = useState({
+    main: {
+      name: "",
+      phoneNumber: "",
+      age: "",
+      gender: "",
+      luggage: "",
+    },
+    additional: {
+      adults: Array.from({ length: 5 }, () => ({ name: "", gender: "" })),
+      children: Array.from({ length: 5 }, () => ({ name: "", gender: "" })),
+    },
   });
 
   const navigate = useNavigate();
@@ -35,34 +40,107 @@ const PassengerForm = ({
   };
 
   const handleChangeMainPassenger = (field, value) => {
-    setMainPassenger((prevDetails) => ({
+    setPassengerDetails((prevDetails) => ({
       ...prevDetails,
-      [field]: value,
+      main: {
+        ...prevDetails.main,
+        [field]: value,
+      },
     }));
+  };
+
+  const handlePassengerDetailsChange = (index, field, value, type) => {
+    setPassengerDetails((prevDetails) => {
+      const updatedAdditional = { ...prevDetails.additional };
+
+      // Ensure that updatedAdditional[type] is an array before accessing the index
+      if (!updatedAdditional[type]) {
+        updatedAdditional[type] = [];
+      }
+
+      // Update the correct type (adults or children) based on the index
+      updatedAdditional[type][index] = {
+        ...updatedAdditional[type][index],
+        [field]: value,
+      };
+
+      return {
+        ...prevDetails,
+        additional: updatedAdditional,
+      };
+    });
+  };
+
+  const generatePassengerFields = (count, type, handleChange) => {
+    const fields = [];
+    const additionalPassengers = passengerDetails.additional || {
+      adults: [],
+      children: [],
+    };
+    const passengersOfType = additionalPassengers[type] || [];
+
+    for (let i = 0; i < count; i++) {
+      const passenger = passengersOfType[i] || {};
+
+      fields.push(
+        <div key={i} className="passenger-details">
+          <h4>
+            {type} #{i + 1}
+          </h4>
+          <label htmlFor={`passengerName${i}`}>Name:</label>
+          <input
+            type="text"
+            id={`passengerName${i}`}
+            name={`passengerName${i}`}
+            value={passenger.name || ""}
+            onChange={(e) => handleChange(i, "name", e.target.value, type)}
+            required
+          />
+
+          <label htmlFor={`passengerGender${i}`}>Gender:</label>
+          <select
+            id={`passengerGender${i}`}
+            name={`passengerGender${i}`}
+            value={passenger.gender || ""}
+            onChange={(e) => handleChange(i, "gender", e.target.value, type)}
+            required
+          >
+            <option value="" disabled>
+              Select Gender
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+      );
+    }
+
+    return fields;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (send data to backend)
+
     const travelDetails = {
-      adults: adultCount,
-      children: childCount,
-      mainPassenger,
+      adultss: adultCount,
+      childrens: childCount,
+      mainPassenger: passengerDetails.main,
+      additionalPassengers: passengerDetails.additional,
       flightName,
       flightClass,
       price,
       date,
-      
     };
-    console.log("Travel details submitted:", travelDetails);
-    // After handling submission, you can navigate to a confirmation page or perform other actions
+
+    console.log("Travel Details:", travelDetails);
+
     try {
       const token = localStorage.getItem("token");
       if (!token) {
         console.error("User is not authenticated. Please log in.");
         return;
       }
-
+      console.log(travelDetails);
       const response = await axios.post(
         `${backendUrl}/api/submitTravelDetails`,
         travelDetails,
@@ -74,16 +152,11 @@ const PassengerForm = ({
       );
 
       console.log("Server response:", response.data);
-      // After handling submission, you can navigate to a confirmation page or perform other actions
-
       navigate("/seatBooking");
     } catch (error) {
       console.error("Error submitting travel details:", error.message);
-      // Handle the error
     }
   };
-
-  //   };
 
   return (
     <div className="passenger-form-container">
@@ -132,7 +205,7 @@ const PassengerForm = ({
             type="text"
             id="mainName"
             name="mainName"
-            value={mainPassenger.name}
+            value={passengerDetails.main.name || ""}
             onChange={(e) => handleChangeMainPassenger("name", e.target.value)}
             required
           />
@@ -142,7 +215,7 @@ const PassengerForm = ({
             type="number"
             id="mainPhoneNumber"
             name="mainPhoneNumber"
-            value={mainPassenger.phoneNumber}
+            value={passengerDetails.main.phoneNumber || ""}
             onChange={(e) =>
               handleChangeMainPassenger("phoneNumber", e.target.value)
             }
@@ -154,7 +227,7 @@ const PassengerForm = ({
             type="number"
             id="mainAge"
             name="mainAge"
-            value={mainPassenger.age}
+            value={passengerDetails.main.age || ""}
             onChange={(e) => handleChangeMainPassenger("age", e.target.value)}
             required
           />
@@ -163,7 +236,7 @@ const PassengerForm = ({
           <select
             id="mainGender"
             name="mainGender"
-            value={mainPassenger.gender}
+            value={passengerDetails.main.gender || ""}
             onChange={(e) =>
               handleChangeMainPassenger("gender", e.target.value)
             }
@@ -180,7 +253,7 @@ const PassengerForm = ({
           <select
             id="mainLuggage"
             name="mainLuggage"
-            value={mainPassenger.luggage}
+            value={passengerDetails.main.luggage || ""}
             onChange={(e) =>
               handleChangeMainPassenger("luggage", e.target.value)
             }
@@ -193,6 +266,17 @@ const PassengerForm = ({
             <option value="checked">Checked</option>
           </select>
         </div>
+
+        {generatePassengerFields(
+          adultCount,
+          "Adult",
+          handlePassengerDetailsChange
+        )}
+        {generatePassengerFields(
+          childCount,
+          "Child",
+          handlePassengerDetailsChange
+        )}
 
         <button type="submit" className="passenger-button">
           Submit

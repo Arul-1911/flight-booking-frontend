@@ -17,37 +17,30 @@
 }
 
 .form-container {
+  /* Remove the bottom and position properties */
   display: flex;
-  flex-direction: column; /* Display items in a row by default */
+  flex-direction: row;
   border: 1px solid black;
   width: 100%;
   max-width: 700px;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  margin-top: 20px;
+  margin-top: -70px;
   border-radius: 10px;
   margin-left: auto;
   margin-right: auto;
-  position: relative;
-  bottom: 80px;
   background-color: rgb(243, 248, 253);
 }
 
+/* Remove the fixed height for .form-fields */
 .form-fields {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Change to column layout on smaller screens */
+  align-items: center; /* Center items horizontally */
   padding: 10px;
-  height: 90px;
 }
 
-/* .form-fields input {
-  width: 190px;
-  padding: 20px;
-  height: 60px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-} */
 
 select {
   width: 190px;
@@ -114,30 +107,24 @@ select {
   }
 
   .form-container {
-    /* flex-direction: column; Change to column layout on smaller screens */
-    width: 70%;
-    padding-bottom: 20px;
-    padding-right: 18px;
-    height: 370px;
-    position: relative;
-    right: 9px;
-    /* height: auto; Remove fixed height to allow content to determine height */
-  }
-
-  .search {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    left: 45px;
+    width: 90%;
+    padding: 17px;
   }
 
   .form-fields {
-    /* flex-direction: column; Change to column layout on smaller screens */
-    flex-wrap: wrap;
-    display: flex;
-    flex-direction: row;
+    /* Keep the flex-direction: column and align-items: center */
+    flex-wrap: wrap; /* Allow form fields to wrap on smaller screens */
   }
 
+  select, .custom-date-width {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .search {
+    width: 100%;
+    margin-top: 10px;
+  }
 
   .three-image-container {
     flex-direction: column;

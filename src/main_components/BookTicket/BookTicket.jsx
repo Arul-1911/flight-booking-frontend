@@ -145,12 +145,3 @@ function BookTicket() {
 
 export default BookTicket;
 
-/* {<div className="row align-items-center">
-<div className="col-12 text-center">
-  <img src={errimg} alt="error-display" className="error-image" />
-  <h1 className="error-text">No Flights found...</h1>
-  <button onClick={handleChange} className="back-to-booking mt-4">
-    Back To Booking
-  </button>
-</div>
-</div> */

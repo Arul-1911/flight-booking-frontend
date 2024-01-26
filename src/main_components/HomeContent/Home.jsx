@@ -53,12 +53,7 @@ const handleSearch = (event) => {
     return;
   }
 
-  // Custom validation for adults count
-  // const adultsCount = form.querySelector("#adultsCount").value;
-  // if (parseInt(adultsCount, 10) < 1) {
-  //   alert("Please select at least one adult.");
-  //   return;
-  // }
+  
 
   const url = `/bookticket/${departure}/${arrival}/${flightClass}/${date}`;
   navigate(url);
@@ -83,7 +78,7 @@ const handleSearch = (event) => {
               value={selectedDeparture} // bind value to selectedDeparture
               onChange={(e) => setSelectedDeparture(e.target.value)}
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Departure
               </option>
               <option value="chennai">Chennai</option>
@@ -104,7 +99,7 @@ const handleSearch = (event) => {
               value={selectedArrival} // bind value to selectedArrival
               onChange={(e) => setSelectedArrival(e.target.value)}
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Arrival
               </option>
               <option value="coimbatore">Coimbatore</option>
@@ -126,36 +121,7 @@ const handleSearch = (event) => {
           />
           {/* <div class="modal-dialog modal-xl">passeneger and Classes</div> */}
 
-          {/* <select
-            className="form-select form-select-sm mx-2 custom-select-width"
-            aria-label=".form-select-sm example"
-            id="adultsCount"
-            required
-          >
-            <option value="" disabled selected>
-              Adults (count)
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-
-          <select
-            className="form-select form-select-sm mx-2 custom-select-width"
-            aria-label=".form-select-sm example"
-            required
-          >
-            <option value="" disabled selected>
-              Child (under 18)
-            </option>
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select> */}
+       
 
           <select
             className="form-select form-select-sm mx-2 custom-select-width"
@@ -181,7 +147,7 @@ const handleSearch = (event) => {
             <img src={img1} alt="1" />
             <div>
               <br />
-              <h4>One search, all the flights</h4>
+              <h4>One search, Desired flights</h4>
               <p className="desc">
                 Kiwi-Code finds cheap flights other sites can't see.
               </p>
@@ -202,7 +168,7 @@ const handleSearch = (event) => {
             <div>
               <h4>Trusted by millions</h4>
               <p className="desc">
-                Join over 10 million yearly travelers booking with ease.
+                Join over 2 million yearly travelers booking with ease.
               </p>
             </div>
           </span>
