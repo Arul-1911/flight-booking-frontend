@@ -1,6 +1,6 @@
 // SeatBooking.js
 import Header from "../Header/Header";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./seatbooking.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
 import backendUrl from "../../Url/backendurl";
@@ -8,19 +8,42 @@ import backendUrl from "../../Url/backendurl";
 
 function SeatBooking() {
   const navigate = useNavigate();
+  const [totalAmount,setTotalAmount]= useState(0);
+
+
+  useEffect(() => {
+    // Fetch total amount from the backend when the component mounts
+    const fetchTotalAmount = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/api/getTotalAmount`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        const data = await response.json();
+        setTotalAmount(data.totalPrice);
+      } catch (error) {
+        console.error("Error fetching total amount:", error);
+      }
+    };
+
+    fetchTotalAmount();
+  }, []);
 
   const Payment = async (e) => {
-    // Add your navigation logic to the payment gateway here
-    // navigate('/payment')
-    const amount = 50000;
     const currency = 'INR';
-    const receiptId = 'qwsaq1'
+    const receiptId = 'qwsaq1';
 
+    // Convert totalPrice to paise (multiply by 100)
+    const amountInPaise = totalAmount * 100;
     try {
       const response = await fetch(`${backendUrl}/order`, {
         method: "POST",
         body: JSON.stringify({
-          amount,
+          amount: amountInPaise,  // Use the amount in paise
           currency,
           receipt: receiptId,
         }),
@@ -34,7 +57,7 @@ function SeatBooking() {
 
       var options = {
         "key": "rzp_test_2EGK4ZYVHmtD0I", // Enter the Key ID generated from the Dashboard
-        amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        amount: amountInPaise,  // Use the amount in paise
         currency,
         "name": "Kiwi Flights.com", //your business name
         "description": "Test Transaction",
@@ -106,11 +129,7 @@ function SeatBooking() {
     rzp1.on('payment.failed', function (response){
         alert(response.error.code);
         alert(response.error.description);
-        alert(response.error.source);
-        alert(response.error.step);
-        alert(response.error.reason);
-        alert(response.error.metadata.order_id);
-        alert(response.error.metadata.payment_id);
+       
     });
     
     rzp1.open();

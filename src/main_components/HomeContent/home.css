@@ -113,6 +113,7 @@ select {
 
   .form-fields {
     /* Keep the flex-direction: column and align-items: center */
+
     flex-wrap: wrap; /* Allow form fields to wrap on smaller screens */
   }
 
