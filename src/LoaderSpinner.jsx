@@ -30,7 +30,6 @@ const LoaderSpinner = ({ style }) => {
       <div css={overlayStyles} style={style}>
         <div css={containerStyles}>
           <RingLoader color={"#008774"} loading={true} size={100} />
-          <p>Loading.....</p>
         </div>
       </div>
     );

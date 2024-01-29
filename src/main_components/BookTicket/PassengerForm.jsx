@@ -8,6 +8,7 @@ const PassengerForm = ({
   onBackToBooking,
   flightName,
   flightClass,
+  flightId, 
   price,
   date,
 }) => {
@@ -128,6 +129,7 @@ const PassengerForm = ({
       additionalPassengers: passengerDetails.additional,
       flightName,
       flightClass,
+      flightId, 
       price,
       date,
     };

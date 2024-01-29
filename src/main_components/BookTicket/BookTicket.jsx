@@ -102,6 +102,7 @@ function BookTicket() {
           flightName={selectedFlight.plane_name}
           price={selectedFlight.price}
           date={selectedDate}
+          flightId={selectedFlight._id}  // Ensure you are passing the correct flightId
           flightClass={flightClass}
         />
       ) : (

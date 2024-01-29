@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./seatbooking.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
 import backendUrl from "../../Url/backendurl";
+import logo from '../../assets/logo.png'
 
 
 function SeatBooking() {
@@ -61,7 +62,7 @@ function SeatBooking() {
         currency,
         "name": "Kiwi Flights.com", //your business name
         "description": "Test Transaction",
-        "image": "https://example.com/your_logo",
+        "image": logo,
         "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": async function (response){
             // alert(response.razorpay_payment_id);

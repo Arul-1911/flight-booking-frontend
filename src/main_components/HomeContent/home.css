@@ -112,12 +112,11 @@ select {
   }
 
   .form-fields {
-    /* Keep the flex-direction: column and align-items: center */
-
-    flex-wrap: wrap; /* Allow form fields to wrap on smaller screens */
+    flex-wrap: wrap;
   }
 
-  select, .custom-date-width {
+  select,
+  .custom-date-width {
     width: 100%;
     margin-right: 0;
   }
@@ -125,6 +124,7 @@ select {
   .search {
     width: 100%;
     margin-top: 10px;
+    text-align: center;
   }
 
   .three-image-container {

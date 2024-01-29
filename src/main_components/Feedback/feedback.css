@@ -1,0 +1,16 @@
+.feedback-logo {
+    position: fixed;
+    right: 0;
+    top: 90%;
+    transform: translateY(-50%);
+    width: 80px;
+    background-color: white;
+    border-radius: 40px;
+}
+
+@media (max-width: 576px) {
+    .feedback-logo {
+        right: 19px; /* Adjust for smaller screens */
+        width: 60px; /* Adjust for smaller screens */
+    }
+}
