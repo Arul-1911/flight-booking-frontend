@@ -14,10 +14,9 @@ function Header() {
     navigate("/", { replace: true });
   };
 
-   const handleLogoClick = () => {
-    navigate("/home")
-   }
-
+  const handleLogoClick = () => {
+    navigate("/home");
+  };
 
   return (
     <div>
@@ -34,14 +33,18 @@ function Header() {
               <span className="header ms-3">BookTicket</span>
             </Link>
 
-            <span className="header ms-3">MyTickets</span>
+            <Link to="/myticket" className="link-without-underline">
+              <span className="header ms-3">MyTickets</span>
+            </Link>
+
             <Link to="/about" className="link-without-underline">
               <span className="header ms-3">About</span>
             </Link>
+
             <Link to="/contact" className="link-without-underline">
               <span className="header ms-3">Contact</span>
             </Link>
-            </span>
+          </span>
           <span>
             {" "}
             {/* Logout button */}

@@ -1,4 +1,4 @@
-// SeatBooking.js
+
 import Header from "../Header/Header";
 import React, { useState, useEffect } from "react";
 import "./seatbooking.css"; // Import the CSS file
@@ -38,7 +38,7 @@ function SeatBooking() {
     const currency = 'INR';
     const receiptId = 'qwsaq1';
 
-    // Convert totalPrice to paise (multiply by 100)
+   
     const amountInPaise = totalAmount * 100;
     try {
       const response = await fetch(`${backendUrl}/order`, {
@@ -65,9 +65,7 @@ function SeatBooking() {
         "image": logo,
         "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": async function (response){
-            // alert(response.razorpay_payment_id);
-            // alert(response.razorpay_order_id);
-            // alert(response.razorpay_signature)
+
             const body = {
               ...response
             };
@@ -83,13 +81,17 @@ function SeatBooking() {
             const jsonres = await validateRes.json();
             console.log(jsonres);
 
+            // After successful payment, navigate to MyTicket component
+    if (jsonres.message === "payment success") {
+      navigate("/myticket");
+    }
 
 
         },
-        "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-            "name": "Arul", //your customer's name
+        "prefill": { 
+            "name": "Arul", // customer's name
             "email": "Arul@example.com", 
-            "contact": "9000090000"  //Provide the customer's phone number for better conversion rates 
+            "contact": "9000090000" 
         },
         "notes": {
             "address": "Razorpay Corporate Office"
@@ -141,11 +143,11 @@ function SeatBooking() {
       console.log(error)
     }
 
-    // console.log("Navigate to the payment gateway");
+   
   };
 
   const cancelPayment = () => {
-    // Add your logic to go back to the passenger details form
+   
     navigate("/home");
     console.log("Cancel Payment and go back to passenger details form");
   };

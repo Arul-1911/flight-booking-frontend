@@ -1,4 +1,4 @@
-/* home.css */
+
 
 .home-container {
   display: flex;
@@ -17,7 +17,7 @@
 }
 
 .form-container {
-  /* Remove the bottom and position properties */
+  
   display: flex;
   flex-direction: row;
   border: 1px solid black;

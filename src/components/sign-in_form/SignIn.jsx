@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import backendUrl from "../../Url/backendurl";
 import axios from "axios";
-import LoaderSpinner from "../../LoaderSpinner"; // Adjust the import path
+import LoaderSpinner from "../../LoaderSpinner"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "./signin_style.css";

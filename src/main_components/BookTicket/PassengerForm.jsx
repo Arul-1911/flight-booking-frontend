@@ -54,7 +54,7 @@ const PassengerForm = ({
     setPassengerDetails((prevDetails) => {
       const updatedAdditional = { ...prevDetails.additional };
 
-      // Ensure that updatedAdditional[type] is an array before accessing the index
+      
       if (!updatedAdditional[type]) {
         updatedAdditional[type] = [];
       }

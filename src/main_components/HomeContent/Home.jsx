@@ -38,7 +38,7 @@ const handleSearch = (event) => {
   const departure = form.querySelector("#departureLocation").value;
   const arrival = form.querySelector("#arrivalLocation").value;
   const flightClass = form.querySelector("#flightClass").value;
-  // const date = form.querySelector("#departure").value;
+  
 
   // Custom validation for departure and arrival
   if (departure === "" || arrival === "" || departure === arrival) {
@@ -84,7 +84,6 @@ const handleSearch = (event) => {
               <option value="chennai">Chennai</option>
               <option value="coimbatore">Coimbatore</option>
               <option value="madurai">Madurai</option>
-              {/* <option value="trichy">Trichy</option> */}
             </select>
           </div>
           <div className="d-flex align-items-center mx-1">
@@ -119,7 +118,7 @@ const handleSearch = (event) => {
             className="date custom-date-width form-control"
             required
           />
-          {/* <div class="modal-dialog modal-xl">passeneger and Classes</div> */}
+         
 
        
 

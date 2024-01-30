@@ -7,7 +7,6 @@ function Homepage() {
   return (
     <>
       <Header />
-
       <BookTicket />
       <Footer />
     </>

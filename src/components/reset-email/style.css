@@ -42,7 +42,7 @@
   .error-message {
     color: #e74c3c;
     margin-top: 2px;
-    /* text-align: left; */
+    
   }
   
   /* Style the error message specifically for email */
@@ -74,7 +74,7 @@
   
   @media screen and (max-width: 600px) {
     .auth-form {
-      width: 80%; /* Adjust width for smaller screens */
+      width: 80%; 
     }
   
   

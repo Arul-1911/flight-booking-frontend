@@ -1,41 +1,36 @@
-/* Add these styles to your CSS file or in your component's styling */
 .err-img-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Set the container height to cover the entire viewport height */
-  }
-  
-  .error-img-container img {
-    max-width: 65%; /* Adjust the width percentage as needed for responsiveness */
-    height: auto;
-    margin: 0 auto; /* Center the image horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.error-img-container img {
+  max-width: 65%;
+  height: auto;
+  margin: 0 auto; /* Center the image horizontally */
+  position: relative;
+  left: 80px;
+  bottom: 30px;
+}
+
+.bth-err-btn {
+  width: 40%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 30px;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 769px) {
+  .err-img-container {
+    max-width: 45%; /* Adjust the max-width percentage as needed */
     position: relative;
-    left: 80px;
-    bottom: 30px; /* Adjust the bottom position as needed */
+    left: 410px; /* Center the container horizontally */
   }
-  
+
   .bth-err-btn {
-    width: 40%; /* Adjust the width percentage as needed */
-    margin-top: 10px; /* Add margin for spacing */
-    border: none;
-    border-radius: 30px;
-    margin-bottom: 50px;
+    width: 35%;
   }
-  
-  /* Add media queries for responsiveness */
-  @media (min-width: 769px) {
-    /* Styles for screens wider than 768px */
-  
-    .err-img-container {
-      max-width: 45%; /* Adjust the max-width percentage as needed */
-      position: relative;
-      left: 410px; /* Center the container horizontally */
-    }
-  
-    .bth-err-btn {
-      width: 35%; /* Adjust the width percentage as needed */
-    }
-  }
-  
+}

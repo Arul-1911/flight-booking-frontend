@@ -36,8 +36,7 @@ const MyModal = () => {
       if (response.data.success) {
         console.log("Feedback submitted successfully.");
         setSubmissionStatus("Feedback submitted successfully.");
-        // Optionally, close the modal or reset form fields
-        // setShowModal(false);
+        
       } else {
         console.error("Feedback submission failed.");
         setSubmissionStatus("Feedback submission failed.");
@@ -125,7 +124,7 @@ const MyModal = () => {
                 )}
               </div>
               <div className="modal-footer">
-                {/* Additional footer buttons if needed */}
+                
               </div>
             </div>
           </div>

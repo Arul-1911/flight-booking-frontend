@@ -27,7 +27,6 @@ button {
   width: 100%;
   padding: 10px;
   margin-bottom: 30px;
-  /* box-sizing: border-box; */
   border-radius: 20px;
 }
 
@@ -88,7 +87,7 @@ button {
 
 @media screen and (max-width: 600px) {
   .auth-form {
-    width: 80%; /* Adjust width for smaller screens */
+    width: 80%; 
   }
 
 }

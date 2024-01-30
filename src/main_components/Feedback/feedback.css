@@ -10,7 +10,7 @@
 
 @media (max-width: 576px) {
     .feedback-logo {
-        right: 19px; /* Adjust for smaller screens */
-        width: 60px; /* Adjust for smaller screens */
-    }
+        right: 19px; 
+        width: 60px; 
+        }
 }

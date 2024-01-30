@@ -5,7 +5,7 @@ import axios from "axios";
 import backendUrl from "../../Url/backendurl";
 import PassengerForm from "./PassengerForm";
 
-// import { AiOutlineSwap } from "react-icons/ai";
+
 import errimg from "../../assets/404 image.png";
 import flight_card_img from "../../assets/flight-details-card-img.jpg";
 
@@ -77,8 +77,7 @@ function BookTicket() {
     fetchFlights();
   }, [departure, arrival, flightClass, date]);
 
-  // console.log("flightsFetchedSuccessfully:", flightsFetchedSuccessfully);
-  // console.log("flights:", flights);
+ 
 
   const handleBookNowClick = (flight) => {
     setSelectedFlight(flight);
@@ -119,7 +118,6 @@ function BookTicket() {
             ))
           ) : (
             <div className="container error-container">
-              {/* ... (existing error handling code) */}
               <div className="row align-items-center">
                 <div className="col-12 text-center">
                   <img
