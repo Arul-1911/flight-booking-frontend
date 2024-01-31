@@ -1,3 +1,3 @@
-const backendUrl = 'http://localhost:5000';
+const backendUrl = 'https://flight-booking-kgdc.onrender.com';
 
 export default backendUrl;
